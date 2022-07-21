@@ -19,7 +19,7 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')->hourly();
         $schedule->call(function () {
             dispatch(new LastPwndChecker());
-        })->everyMinute();
+        })->everyDay();
     }
 
     //* * * * * php //home/maxim/Laravel practice/example-app/artisan schedule:run >> /dev/null 2>&1

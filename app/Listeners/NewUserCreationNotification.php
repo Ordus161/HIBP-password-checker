@@ -6,6 +6,7 @@ use App\Jobs\ProcessCheckPassword;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Support\Facades\Auth;
 
 class NewUserCreationNotification implements ShouldQueue
 {
@@ -18,8 +19,9 @@ class NewUserCreationNotification implements ShouldQueue
      */
     public function handle(Registered $event)
     {
+
         //if ($event->user instanceof Registered)
-        dispatch(new ProcessCheckPassword(1));
+        dispatch(new ProcessCheckPassword($event->user->id));
         
     }
 }

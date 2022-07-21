@@ -16,8 +16,10 @@ return new class extends Migration
         Schema::create('breaches', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('hash');
-            $table->bigInteger('times_pwnd');
-            $table->timestamp('last_check');
+            $table->bigInteger('times_pwnd')->default(0);
+            $table->timestamp('created_at');
+            $table->timestamp('last_check')->nullable();
+            $table->timestamp('updated_at');
         });
     }
 
